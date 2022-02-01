@@ -5,7 +5,7 @@
             "package": "BasePackage",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
-            "default": true
+            "default": false
         }
     ],
     "name": "project-visualforce",
@@ -13,6 +13,7 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "52.0",
     "packageAliases": {
-        "BasePackage": "0Ho8c000000XZDaCAO"
+        "BasePackage": "0Ho8c000000XZDaCAO",
+        "BasePackage@0.1.0-1": "04t8c000000pLZ8AAM"
     }
 }
