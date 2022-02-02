@@ -1,0 +1,22 @@
+<!--BATTLE SCREEN, wizard, decides on coin flip what team wins-->
+
+<!--teams will be passed to me, (ID: 2, Pokemon_1__c: 1, Pokemon_2__c: 3)-->
+
+<!--standardController="Team"-->  <!--ERROR: Dependencies-->
+<apex:page standardController="Team__c" extensions="VFBattleExtension">
+    <apex:slds />
+    <apex:form>
+        <apex:pageBlock title="PokemonBattle" mode="view">
+            <apex:pageBlockSection columns="8">
+                <apex:outputField value="{!Team__c.name}"/>
+                <apex:outputField value="{!Team__c.Pokemon_1__c}"/>
+                <apex:outputField value="{!Team__c.Pokemon_2__c}"/>
+                <apex:outputField value="{!Team__c.Pokemon_3__c}"/>
+                <apex:outputField value="{!Team__c.Pokemon_4__c}"/>
+                <apex:outputField value="{!Team__c.Pokemon_5__c}"/>
+                <apex:outputField value="{!Team__c.Pokemon_6__c}"/>
+                {!Team} <p/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
