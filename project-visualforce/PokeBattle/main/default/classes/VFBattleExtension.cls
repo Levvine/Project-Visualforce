@@ -5,6 +5,7 @@ public class VFBattleExtension {
     //public map<string, string> getparameters()
     //pageReference.getParameters().put('Id', myID);
     //instantiate apexPages standard controller for list controller
+    //https://www.forcetalks.com/blog/salesforce-rest-api-http-and-callout-basics-all-you-need-to-know/ REST CALLOUT INFO
 
 
     public ApexPages.StandardSetController setCon{
