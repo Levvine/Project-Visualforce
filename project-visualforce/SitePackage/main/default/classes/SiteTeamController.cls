@@ -72,7 +72,7 @@ global class SiteTeamController {
         // Sanitizes Id input
         String teamId = String.escapeSingleQuotes(req.requestURI.substringAfter(sObjName + '/'));
         
-        // return 400 is no Team Id provided
+        // return 400 if no Team Id provided
         if (teamId == '') {
             res.statusCode = 400;
         } else {
@@ -84,6 +84,8 @@ global class SiteTeamController {
                 res.addHeader('Content-Type', 'application/json');
                 res.responseBody = Blob.valueof(JSON.serialize(resBody));
             } catch (System.QueryException e) {
+                res.statusCode = 404;
+            } catch (System.NullPointerException e) {
                 res.statusCode = 404;
             }
         }
