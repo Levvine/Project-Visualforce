@@ -3,7 +3,7 @@
 <!--teams will be passed to me, (ID: 2, Pokemon_1__c: 1, Pokemon_2__c: 3)-->
 <apex:page controller="VFBattleExtension">
     <head>
-        <apex:slds />
+        <apex:slds/>
     </head>
     <body>    
         <apex:PageBlock>
