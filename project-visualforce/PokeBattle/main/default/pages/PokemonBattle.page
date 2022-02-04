@@ -1,20 +1,25 @@
 <!--BATTLE SCREEN, wizard, decides on coin flip what team wins-->
 
 <!--teams will be passed to me, (ID: 2, Pokemon_1__c: 1, Pokemon_2__c: 3)-->
-
-<!--standardController="Team"-->  <!--ERROR: Dependencies-->
-<apex:page standardController="Team__c" extensions="VFBattleExtension">
+<apex:page controller="VFBattleExtension">
     <head>
         <apex:slds />
     </head>
-    <body class="slds-scope">
-    <apex:form>
-        <apex:pageBlock title="PokemonBattle" mode="view">
-            <apex:pageBlockSection columns="8">
-                <apex:outputField value="{!Team__c.name}"/>
-            </apex:pageBlockSection>
-                <apex:commandButton action="{!Battle}" value="Battle"/>
-        </apex:pageBlock>
-    </apex:form>
+    <body>    
+        <apex:PageBlock>
+            <apex:pageBlockTable value="{!teams}" var="T">
+                <apex:column value="{!T.Name}"/>
+                <apex:column value="{!T.Id}"/>
+                <apex:column value="{!T.Pokemon_1__c}"/>
+                <apex:column value="{!T.Pokemon_2__c}"/>
+                <apex:column value="{!T.Pokemon_3__c}"/>
+                <apex:column value="{!T.Pokemon_4__c}"/>
+                <apex:column value="{!T.Pokemon_5__c}"/>
+                <apex:column value="{!T.Pokemon_6__c}"/>
+            </apex:pageBlockTable>  
+            <apex:form>
+            <apex:commandButton action="{!Battle}" value="Battle" id="BattleButton"/>
+            </apex:form>
+        </apex:PageBlock>
     </body>
 </apex:page>
