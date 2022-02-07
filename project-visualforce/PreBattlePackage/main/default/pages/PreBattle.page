@@ -2,18 +2,23 @@
     <apex:form >
         <apex:pageBlock title="New Battle" mode="edit">
             <apex:pageBlockButtons >
-                <apex:commandButton action="{!save}" value="Save"/>
+                <apex:commandButton action="{!cancel}" value="Cancel" />
+                <apex:commandButton action="{!save}" value="Start" />
             </apex:pageBlockButtons>
-            <apex:pageBlockSection title="Team Selection" columns="2">
-                <!-- <apex:inputField value="{!battle__c.name}" /> -->
+            <apex:pageBlockSection id="team-select" title="Team Selection" columns="2">
                 <apex:inputField value="{!Battle__c.Host__c}" />
                 <apex:inputField value="{!Battle__c.HostTeam__c}" />
-                <apex:selectRadio value="{!country}">
-                    <apex:selectOptions value="{!items}"/>
-                </apex:selectRadio><p/>
-                <!--<apex:inputField value="{!account.site}"/> -->
-                <!--<apex:inputField value="{!account.type}"/> -->
-                <!-- <apex:inputField value="{!account.accountNumber}"/> -->
+                <apex:pageBlockSectionItem helpText="{!opponentHelpText}">
+                    <apex:outputLabel value="Opponent Selection" />
+                    <apex:selectRadio value="{!opponent}">
+                        <apex:selectOptions value="{!opponentOptions}" />
+                        <apex:actionSupport event="onchange" action="{!refresh}" rerender="team-select" status="status" />
+                    </apex:selectRadio>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="opponent-url" rendered="{!showOpponentURL}">
+                    <apex:outputLabel value="Opponent URL" />
+                    <apex:inputText value="{!opponentURL}" />
+                </apex:pageBlockSectionItem>
             </apex:pageBlockSection>
         </apex:pageBlock>
     </apex:form>
