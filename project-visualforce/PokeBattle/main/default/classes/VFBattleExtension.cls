@@ -7,18 +7,24 @@ public class VFBattleExtension {
     //instantiate apexPages standard controller for list controller
     //https://www.forcetalks.com/blog/salesforce-rest-api-http-and-callout-basics-all-you-need-to-know/ REST CALLOUT INFO
 
-
     public ApexPages.StandardSetController setCon{
         get {
-            string homeTeam = 'a001F00000AGkrL';	//ApexPages.currentPage().getParameters().get('myTeam');  //recieve the home team recordId to be used to load the home team lineup. 
-            string oppTeam = 'a001F00000AGqf3';	//ApexPages.currentPage().getParameters().get('oppTeam');
-
+            //declare teams.  can alternatively get methods with ApexPages.currentPage().getParameters().get('urlParameterToGet');
+            string myTeam;
+            string oppTeam;
+            //Map param id exploration
+            Map<string, string> paramMap = apexPages.currentPage().getparameters();
+            if(paramMap.containsKey('myTeam') && paramMap.containsKey('oppTeam')){
+                myTeam = paramMap.get('myTeam');
+                oppTeam = paramMap.get('oppTeam');
+            }
             if(setCon == null) {
                 setCon = new ApexPages.StandardSetController(Database.getQueryLocator(
                     [SELECT Name, Id, Pokemon_1__c, Pokemon_2__c, Pokemon_3__c, Pokemon_4__c, Pokemon_5__c, Pokemon_6__c 
                     FROM Team__c 
-                    WHERE Id = :homeTeam OR Id = :oppTeam]));
+                    WHERE Id = :myTeam OR Id = :oppTeam ORDER BY Id]));
             }
+
 
             //attempted rest GET for the pokeAPI  //set pokeindex to swap between pokemon.
             string pokeIndex = '234';   //hardcode pokemon change to be based off of pokemon_x__c later
@@ -31,13 +37,15 @@ public class VFBattleExtension {
             if(response.getStatusCode() == 200){
                 //deserialize json string into collections of primitive data types.
                 Map<String, Object> results  = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+                system.debug('results: ' + results);
                 //cast values as a list
-                Map<string, Object> sprites = (Map<string, object>) results.get('sprites');
-                system.debug('Recieved following sprites' + sprites);
+                Map<string, Object> returnedInfo = (Map<string, object>) results.get('species');
+                system.debug('Recieved following Name and URL: ' + returnedInfo);
+
+                String PokeName = String.valueOf(returnedInfo.get('name'));
+                String PokeUrl = String.valueOf(returnedInfo.get('url'));
             }
-
-
-
+            
             return setCon;
         }
         set;
@@ -47,7 +55,6 @@ public class VFBattleExtension {
     Public List<Team__c> getTeams(){
         return (List<Team__c>) setCon.getRecords(); 
     }
-
 
 
     public System.PageReference Battle(){
