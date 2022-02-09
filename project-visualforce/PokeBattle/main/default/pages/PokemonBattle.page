@@ -16,7 +16,6 @@
                 <apex:column value="{!T.Pokemon_4__c}"/>
                 <apex:column value="{!T.Pokemon_5__c}"/>
                 <apex:column value="{!T.Pokemon_6__c}"/>
-                <apex:column value="{!PokeName}"/>
             </apex:pageBlockTable>  
             <apex:form>
             <apex:commandButton action="{!Battle}" value="Battle" id="BattleButton"/>

@@ -41,7 +41,6 @@ public class VFBattleExtension {
                 //cast values as a list
                 Map<string, Object> returnedInfo = (Map<string, object>) results.get('species');
                 system.debug('Recieved following Name and URL: ' + returnedInfo);
-
                 String PokeName = String.valueOf(returnedInfo.get('name'));
                 String PokeUrl = String.valueOf(returnedInfo.get('url'));
             }
