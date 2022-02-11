@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trainer__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Trainer for current team</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select a trainer for this team.</inlineHelpText>
+    <label>Trainer</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Teams</relationshipLabel>
+    <relationshipName>Teams</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
