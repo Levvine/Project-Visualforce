@@ -8,18 +8,11 @@
             "default": false
         },
         {
-            "path": "PreBattlePackage",
-            "package": "PreBattlePackage",
-            "versionName": "ver 0.1",
-            "versionNumber": "0.1.0.NEXT",
-            "default": true
-        },
-        {
             "path": "PokeBattle",
             "package": "Battle",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
-            "default": false
+            "default": true
         }
     ],
     "name": "project-visualforce",
