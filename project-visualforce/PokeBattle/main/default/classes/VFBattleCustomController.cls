@@ -7,7 +7,6 @@ public class VFBattleCustomController {
         //instantiate apexPages standard controller for list controller
         //https://www.forcetalks.com/blog/salesforce-rest-api-http-and-callout-basics-all-you-need-to-know/ REST CALLOUT INFO
         
-        public List<sObject> retList;
 
         Public VFBattleCustomController(){
             string myTeam = 'a001F00000AGkrL';
@@ -25,9 +24,6 @@ public class VFBattleCustomController {
                 SELECT Name, Id, Pokemon_1__c, Pokemon_2__c, Pokemon_3__c, Pokemon_4__c, Pokemon_5__c, Pokemon_6__c 
                 FROM Team__c 
                 WHERE Id = :oppTeam];
-
- 
-
 
 
 
