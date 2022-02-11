@@ -1,13 +1,13 @@
 <!--BATTLE SCREEN, wizard, decides on coin flip what team wins-->
 
 <!--teams will be passed to me, (ID: 2, Pokemon_1__c: 1, Pokemon_2__c: 3)-->
-<apex:page controller="VFBattleExtension">
+<apex:page controller="VFBattleCustomController">
     <head>
         <apex:slds/>
     </head>
     <body>    
         <apex:PageBlock>
-            <apex:pageBlockTable value="{!teams}" var="T">
+            <apex:pageBlockTable value="{!Teams}" var="T">
                 <apex:column value="{!T.Name}"/>
                 <apex:column value="{!T.Id}"/>
                 <apex:column value="{!T.Pokemon_1__c}"/>
