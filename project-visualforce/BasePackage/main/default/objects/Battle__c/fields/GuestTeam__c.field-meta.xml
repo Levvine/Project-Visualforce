@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GuestTeam__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Guest team for current battle</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Select a team for the guest trainer.</inlineHelpText>
+    <label>Guest Team</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Team__c.Trainer__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Guest__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Team__c</referenceTo>
+    <relationshipLabel>Battles (Guest)</relationshipLabel>
+    <relationshipName>GuestBattles</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
