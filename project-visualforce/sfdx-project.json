@@ -1,6 +1,13 @@
 {
     "packageDirectories": [
         {
+            "path": "SitePackage",
+            "package": "SitePackage",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT",
+            "default": false
+        },
+        {
             "path": "BasePackage",
             "package": "BasePackage",
             "versionName": "ver 0.1",
@@ -13,13 +20,6 @@
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
             "default": true
-        },
-        {
-            "path": "SitePackage",
-            "package": "SitePackage",
-            "versionName": "ver 0.1",
-            "versionNumber": "0.1.0.NEXT",
-            "default": false
         }
     ],
     "name": "project-visualforce",
