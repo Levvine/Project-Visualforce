@@ -8,6 +8,8 @@ public class VFBattleCustomController {
         //https://www.forcetalks.com/blog/salesforce-rest-api-http-and-callout-basics-all-you-need-to-know/ REST CALLOUT INFO
         
 
+        public List<Team__c> retlist = new List<Team__c>();
+
         Public VFBattleCustomController(){
             string myTeam = 'a001F00000AGkrL';
             string oppTeam = 'a001F00000AGqf3';

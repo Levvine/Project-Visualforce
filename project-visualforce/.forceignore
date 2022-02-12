@@ -10,3 +10,7 @@ package.xml
 
 # LWC Jest
 **/__tests__/**
+
+# SFDC Sites
+**/sites/*.site-meta.xml
+**/profiles/API Profile.profile-meta.xml
