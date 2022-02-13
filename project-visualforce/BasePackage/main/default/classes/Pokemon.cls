@@ -13,9 +13,7 @@ public class Pokemon {
 	public Integer order;	//1
 	public cls_past_types[] past_types;
 	public cls_species species;
-    public cls_sprites sprites { public get {
-        return this.sprites;
-    } }
+    public cls_sprites sprites;
 	public cls_stats[] stats;
 	public cls_types[] types;
 	public Integer weight;	//69
@@ -71,23 +69,15 @@ public class Pokemon {
 	}
 	class cls_sprites {
 		public String back_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png
-		public cls_back_female back_female;
+		public String back_female;
 		public String back_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png
-		public cls_back_shiny_female back_shiny_female;
+		public String back_shiny_female;
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png
-		public cls_front_female front_female;
+		public String front_female;
 		public String front_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/1.png
-		public cls_front_shiny_female front_shiny_female;
+		public String front_shiny_female;
 		public cls_other other;
 		public cls_versions versions;
-	}
-	class cls_back_female {
-	}
-	class cls_back_shiny_female {
-	}
-	class cls_front_female {
-	}
-	class cls_front_shiny_female {
 	}
 	class cls_other {
 		public cls_dream_world dream_world;
@@ -96,13 +86,13 @@ public class Pokemon {
 	}
 	class cls_dream_world {
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream_world/1.svg
-		public cls_front_female front_female;
+		public String front_female;
 	}
 	class cls_home {
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png
-		public cls_front_female front_female;
+		public String front_female;
 		public String front_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/1.png
-		public cls_front_shiny_female front_shiny_female;
+		public String front_shiny_female;
 	}
 	class cls_official_artwork {
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official_artwork/1.png
@@ -194,33 +184,33 @@ public class Pokemon {
 	}
 	class cls_diamond_pearl {
 		public String back_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/diamond_pearl/back/1.png
-		public cls_back_female back_female;
+		public String back_female;
 		public String back_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/diamond_pearl/back/shiny/1.png
-		public cls_back_shiny_female back_shiny_female;
+		public String back_shiny_female;
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/diamond_pearl/1.png
-		public cls_front_female front_female;
+		public String front_female;
 		public String front_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/diamond_pearl/shiny/1.png
-		public cls_front_shiny_female front_shiny_female;
+		public String front_shiny_female;
 	}
 	class cls_heartgold_soulsilver {
 		public String back_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/heartgold_soulsilver/back/1.png
-		public cls_back_female back_female;
+		public String back_female;
 		public String back_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/heartgold_soulsilver/back/shiny/1.png
-		public cls_back_shiny_female back_shiny_female;
+		public String back_shiny_female;
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/heartgold_soulsilver/1.png
-		public cls_front_female front_female;
+		public String front_female;
 		public String front_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/heartgold_soulsilver/shiny/1.png
-		public cls_front_shiny_female front_shiny_female;
+		public String front_shiny_female;
 	}
 	class cls_platinum {
 		public String back_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/platinum/back/1.png
-		public cls_back_female back_female;
+		public String back_female;
 		public String back_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/platinum/back/shiny/1.png
-		public cls_back_shiny_female back_shiny_female;
+		public String back_shiny_female;
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/platinum/1.png
-		public cls_front_female front_female;
+		public String front_female;
 		public String front_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_iv/platinum/shiny/1.png
-		public cls_front_shiny_female front_shiny_female;
+		public String front_shiny_female;
 	}
 	class cls_generation_v {
 		public cls_black_white black_white;
@@ -228,23 +218,23 @@ public class Pokemon {
 	class cls_black_white {
 		public cls_animated animated;
 		public String back_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/back/1.png
-		public cls_back_female back_female;
+		public String back_female;
 		public String back_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/back/shiny/1.png
-		public cls_back_shiny_female back_shiny_female;
+		public String back_shiny_female;
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/1.png
-		public cls_front_female front_female;
+		public String front_female;
 		public String front_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/shiny/1.png
-		public cls_front_shiny_female front_shiny_female;
+		public String front_shiny_female;
 	}
 	class cls_animated {
 		public String back_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/animated/back/1.gif
-		public cls_back_female back_female;
+		public String back_female;
 		public String back_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/animated/back/shiny/1.gif
-		public cls_back_shiny_female back_shiny_female;
+		public String back_shiny_female;
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/animated/1.gif
-		public cls_front_female front_female;
+		public String front_female;
 		public String front_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_v/black_white/animated/shiny/1.gif
-		public cls_front_shiny_female front_shiny_female;
+		public String front_shiny_female;
 	}
 	class cls_generation_vi {
 		public cls_omegaruby_alphasapphire omegaruby_alphasapphire;
@@ -252,15 +242,15 @@ public class Pokemon {
 	}
 	class cls_omegaruby_alphasapphire {
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vi/omegaruby_alphasapphire/1.png
-		public cls_front_female front_female;
+		public String front_female;
 		public String front_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vi/omegaruby_alphasapphire/shiny/1.png
-		public cls_front_shiny_female front_shiny_female;
+		public String front_shiny_female;
 	}
 	class cls_x_y {
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vi/x_y/1.png
-		public cls_front_female front_female;
+		public String front_female;
 		public String front_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vi/x_y/shiny/1.png
-		public cls_front_shiny_female front_shiny_female;
+		public String front_shiny_female;
 	}
 	class cls_generation_vii {
 		public cls_icons icons;
@@ -268,13 +258,13 @@ public class Pokemon {
 	}
 	class cls_icons {
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_viii/icons/1.png
-		public cls_front_female front_female;
+		public String front_female;
 	}
 	class cls_ultra_sun_ultra_moon {
 		public String front_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vii/ultra_sun_ultra_moon/1.png
-		public cls_front_female front_female;
+		public String front_female;
 		public String front_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation_vii/ultra_sun_ultra_moon/shiny/1.png
-		public cls_front_shiny_female front_shiny_female;
+		public String front_shiny_female;
 	}
 	class cls_generation_viii {
 		public cls_icons icons;

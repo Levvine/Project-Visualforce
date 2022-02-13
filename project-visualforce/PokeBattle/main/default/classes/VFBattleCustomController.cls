@@ -1,75 +1,74 @@
 public class VFBattleCustomController {
-    //URL PARAMS TO GET ?myTeam=recId&oppTeam=recId
-        //https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/apex_System_PageReference_getParameters.htm
-        //getParameters() returns a map
-        //public map<string, string> getparameters()
-        //pageReference.getParameters().put('Id', myID);
-        //instantiate apexPages standard controller for list controller
-        //https://www.forcetalks.com/blog/salesforce-rest-api-http-and-callout-basics-all-you-need-to-know/ REST CALLOUT INFO
-        
 
-        public List<Team__c> retlist = new List<Team__c>();
-
-        Public VFBattleCustomController(){
-            string myTeam = 'a001F00000AGkrL';
-            string oppTeam = 'a001F00000AGqf3';
-            //Map<string, string> paramMap = apexPages.currentPage().getparameters();
-            //myTeam = paramMap.get('myTeam');
-            //oppTeam = paramMap.get('oppTeam');
-
-            Team__c home = [
-                SELECT Name, Id, Pokemon_1__c, Pokemon_2__c, Pokemon_3__c, Pokemon_4__c, Pokemon_5__c, Pokemon_6__c 
-                FROM Team__c 
-                WHERE Id = :myTeam];
-
-            Team__c away = [
-                SELECT Name, Id, Pokemon_1__c, Pokemon_2__c, Pokemon_3__c, Pokemon_4__c, Pokemon_5__c, Pokemon_6__c 
-                FROM Team__c 
-                WHERE Id = :oppTeam];
+        //This is default data, replace with the commented map / param map getparameters code under it when ready for release.
+        string myTeam = 'a001F00000AGkrL';
+        string oppTeam = 'a001F00000AGqf3';
+        //Map<string, string> paramMap = apexPages.currentPage().getparameters();
+        //myTeam = paramMap.get('myTeam');
+        //oppTeam = paramMap.get('oppTeam');
 
 
+        //retrieve home and away team names and pokemon lineup by Id.  returns pokemon as a number for lookup on pokeAPI
+        Team__c home = [
+            SELECT Name, Id, Pokemon_1__c, Pokemon_2__c, Pokemon_3__c, Pokemon_4__c, Pokemon_5__c, Pokemon_6__c 
+            FROM Team__c 
+            WHERE Id = :myTeam];
+        Team__c away = [
+            SELECT Name, Id, Pokemon_1__c, Pokemon_2__c, Pokemon_3__c, Pokemon_4__c, Pokemon_5__c, Pokemon_6__c 
+            FROM Team__c 
+            WHERE Id = :oppTeam];
 
 
-        }
-        Public List<Team__c> getTeams(){
-            
-            return retList; 
-        }
-
-
-        public Static String HTTPrequest(string pokeIndex){
-            //hardcode pokemon change to be based off of pokemon_x__c later
-            String PokeName;
-            Http http = new Http();
-            HttpRequest request = new HttpRequest();
-            request.setEndpoint('https://pokeapi.co/api/v2/pokemon/' + pokeIndex);
-            request.setMethod('GET');
-            HttpResponse response = http.send(request);
-            //if successful, parse json
-            if(response.getStatusCode() == 200){
-                //deserialize json string into collections of primitive data types.
-                Map<String, Object> results  = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
-                system.debug('results: ' + results);
-                //cast values as a list
-                Map<string, Object> returnedInfo = (Map<string, object>) results.get('species');
-                system.debug('Recieved following Name and URL: ' + returnedInfo);
-                PokeName = String.valueOf(returnedInfo.get('name'));
-            }
-            return PokeName;
-    }
-
-        public System.PageReference Battle(){
-            integer intrandom = Integer.valueof((Math.random() * 2 ));  //get random between 1 and 2
-    
-            //logic test  data, loads a random web search engine.
-            PageReference goog = new PageReference('http://www.google.com');
-            PageReference ddg = new PageReference('https://www.duckduckgo.com');
-            //determine coinflip winner, set page parameter to the Id of the winning team.
-            //if homeTeam does not correctly set the recordId, use ApexPages.currentPage().getParameters().get(*page param to use*);
-            if(intrandom == 1){
-                return goog; //ApexPages.currentPage().getParameters().put('Winning Team', homeTeam);
+        //creates string for displaying on VF page.  string is a list of the pokemon names based on the returned data from pokeAPI
+        public string getTeamOnePoke(){
+            string returnString;
+            Pokemon poke1 = pokemon.get(integer.valueOf(home.Pokemon_1__c));
+            Pokemon poke2 = pokemon.get(integer.valueOf(home.Pokemon_2__c));
+            Pokemon poke3 = pokemon.get(integer.valueOf(home.Pokemon_3__c));
+            Pokemon poke4 = pokemon.get(integer.valueOf(home.Pokemon_4__c));
+            Pokemon poke5 = pokemon.get(integer.valueOf(home.Pokemon_5__c));
+            Pokemon poke6 = pokemon.get(integer.valueOf(home.Pokemon_6__c));
+            returnString = poke1.name + ', ' + poke2.name + ', ' + poke3.name + ', ' + poke4.name + ', ' + poke5.name + ', ' + poke6.name;
+            if(returnString != null){
+                return returnString;
             }else{
-                return ddg; //ApexPages.currentPage().getParameters().put('Winning Team', oppTeam);   
+                return 'Pokemon = null';
+            }
+        }
+        public string getTeamTwoPoke(){
+            string returnString;
+            Pokemon poke1 = pokemon.get(integer.valueOf(away.Pokemon_1__c));
+            Pokemon poke2 = pokemon.get(integer.valueOf(away.Pokemon_2__c));
+            Pokemon poke3 = pokemon.get(integer.valueOf(away.Pokemon_3__c));
+            Pokemon poke4 = pokemon.get(integer.valueOf(away.Pokemon_4__c));
+            Pokemon poke5 = pokemon.get(integer.valueOf(away.Pokemon_5__c));
+            Pokemon poke6 = pokemon.get(integer.valueOf(away.Pokemon_6__c));
+            returnString = poke1.name + ', ' + poke2.name + ', ' + poke3.name + ', ' + poke4.name + ', ' + poke5.name + ', ' + poke6.name;
+            if(returnString != null){
+                return returnString;
+            }else{
+                return 'Pokemon = null';
+            }
+        }
+        //gets team names for VF page
+        public string getTeamOne(){
+            return home.name;
+        }
+        public string getTeamTwo(){
+            return away.name;
+        }
+
+
+        //page reference for loading the victory screen with the "winner" team passed as Id
+        public System.PageReference Battle(){
+            integer intrandom = Integer.valueof((Math.random() * 2 ));
+            PageReference HomeTeamWins = new PageReference('/apex/victoryPage?Winner=' + string.valueOf(home.id));
+            PageReference AwayTeamWins = new PageReference('/apex/victoryPage?Winner=' + string.valueOf(away.id));
+            
+            if(intrandom == 1){
+                return HomeTeamWins;
+            }else{
+                return AwayTeamWins; 
             }
         }
     }
