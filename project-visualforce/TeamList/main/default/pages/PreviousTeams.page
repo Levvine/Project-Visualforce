@@ -2,6 +2,7 @@
 	<apex:form >
 		<apex:pageBlock title="Previous Teams">
         <!-- Team List -->
+        <apex:commandLink style="font-weight:bold" action="{!NewTeam}" value="New Team" id="theCommandLink"/>
         <apex:pageBlockTable value="{! Teams }" var="team">
 					<apex:column >
        
@@ -26,6 +27,9 @@
 
     <apex:actionFunction action="{!EditTeam}" name="EditTeam" reRender="form" >
       <apex:param name="teamid" value="" assignTo="{!SelectedTeamId}" />
+    </apex:actionFunction>
+
+    <apex:actionFunction action="{!NewTeam}" name="EditTeam" reRender="form" >
     </apex:actionFunction>
 
 	</apex:form>

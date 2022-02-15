@@ -19,9 +19,12 @@ public with sharing class PreviousTeamEditDeleteController_CC{
    }
 
    public System.Pagereference EditTeam(){
-      
       PageReference Edit = new PageReference('/apex/SaveTeamLoadout?Id=' + string.valueOf(SelectedTeamId));
       return Edit;
+   }
+   public System.Pagereference NewTeam(){
+      PageReference newpage = new Pagereference('/apex/SaveTeamLoadout');
+      return newpage;
    }
 
 
