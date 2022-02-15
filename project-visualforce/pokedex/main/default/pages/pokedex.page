@@ -4,25 +4,25 @@
     </apex:form>
     <apex:pageBlock rendered="{!renderValue}">
          <apex:pageBlockSection >
-             <apex:image id="theImage" value="{!pokespritefin}"/>
+             <apex:image id="theImage" value="{!pokeSprite}"/>
         </apex:pageBlockSection>
        <apex:pageBlockSection >
-        {!actualName}
+        Pokemon Name: {!pokeName}
         </apex:pageBlockSection>
         <apex:pageBlockSection >
-        {!pokeId}
+        Pokedex Number: {!pokeId}
         </apex:pageBlockSection>
         <apex:pageBlockSection >
-        {!pokeHeight}
+        Pokemon Height: {!pokeHeight}
         </apex:pageBlockSection>
         <apex:pageBlockSection >
-        {!pokeWeight}
+        Pokemon Weight: {!pokeWeight}
         </apex:pageBlockSection>
         <apex:pageBlockSection >
-        {!actualtype}
+        Pokemon Type: {!pokeType}
         </apex:pageBlockSection>
     </apex:pageBlock>
-    <apex:pageBlock >
+    <apex:pageBlock rendered="{!!renderValue}">
         <apex:pageBlockSection rendered="{!noResultsBoo}">
             {!noResults}
         </apex:pageBlockSection>
