@@ -36,6 +36,10 @@ public class BattleExtension {
     }
     
     public PageReference save() {
+        // Check if HostTeam was selected properly
+        if (this.battle.HostTeam__c == null) {
+            return null;
+        }
         if (opponent == RANDOM) {
             Team__c oppTeam = new Team__c(
                 Name = 'Random',
@@ -70,7 +74,8 @@ public class BattleExtension {
         String myTeamStr = String.valueOf(this.battle.HostTeam__c);
         String oppTeamStr = String.valueOf(this.battle.GuestTeam__c);
         
-        if (this.battle.HostTeam__c == null || this.battle.GuestTeam__c == null) {
+        // Check if GuestTeam was created properly
+        if (this.battle.GuestTeam__c == null) {
             return null;
         }
         stdController.save();
