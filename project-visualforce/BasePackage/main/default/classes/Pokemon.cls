@@ -1,4 +1,6 @@
 public class Pokemon {
+    public static final Integer maxNum = 898;
+    
 	public cls_abilities[] abilities;
 	public Integer base_experience;	//64
 	public cls_forms[] forms;

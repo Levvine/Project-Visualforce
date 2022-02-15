@@ -3,7 +3,7 @@
 <!--teams will be passed to me, (ID: 2, Pokemon_1__c: 1, Pokemon_2__c: 3)-->
 <apex:page controller="VFBattleCustomController">
     <head>
-        <apex:slds/>
+        <apex:slds />
     </head>
     <body> 
         <div class="slds-scope">
@@ -42,7 +42,7 @@
                 <div class="slds-card__body slds-card__body_inner">{!TeamTwoPoke}</div>
               </article>
         </div>
-        <apex:form>
+        <apex:form >
             <apex:commandButton action="{!Battle}" value="Battle" id="BattleButton"></apex:commandButton>
         </apex:form>
     </body>

@@ -1,7 +1,7 @@
 public class BattleExtension {
-
+    
     final ApexPages.StandardController stdController;
-   	final Battle__c battle;
+    final Battle__c battle;
     public String opponent { get; set; }
     public String opponentHelpText { get; private set; }
     public String opponentURL { get; set; }
@@ -36,7 +36,45 @@ public class BattleExtension {
     }
     
     public PageReference save() {
-        return stdController.save();
+        if (opponent == RANDOM) {
+            Team__c oppTeam = new Team__c(
+                Name = 'Random',
+                Pokemon_1__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1),
+                Pokemon_2__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1),
+                Pokemon_3__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1),
+                Pokemon_4__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1),
+                Pokemon_5__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1),
+                Pokemon_6__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1)
+            );
+            insert oppTeam;
+            this.battle.GuestTeam__c = oppTeam.Id;
+        } else if (opponent == FROM_URL) {
+            try { 
+                Http http = new Http();
+                HttpRequest request = new HttpRequest();
+                request.setEndpoint(opponentURL);
+                request.setMethod('GET');
+                HttpResponse response = http.send(request);
+                Object resBody = JSON.deserializeUntyped(response.getBody());
+                Map<String, Object> resMap = (Map<String, Object>) resBody;
+                resMap.remove('Id');
+                
+                SObject oppTeam = SiteUtils.createSObject('Team__c', resMap);
+                insert oppTeam;
+                
+                this.battle.GuestTeam__c = oppTeam.Id;
+            } catch (CalloutException e) {
+                System.debug(e);
+            }
+        }
+        String myTeamStr = String.valueOf(this.battle.HostTeam__c);
+        String oppTeamStr = String.valueOf(this.battle.GuestTeam__c);
+        
+        if (this.battle.HostTeam__c == null || this.battle.GuestTeam__c == null) {
+            return null;
+        }
+        stdController.save();
+        return new PageReference('/apex/PokemonBattle?myTeam=' + myTeamStr + '&oppTeam=' + oppTeamStr);
     }
-
+    
 }
