@@ -14,6 +14,17 @@ public with sharing class PreviousTeamEditDeleteController_CC{
        teams = [SELECT id, Name, Pokemon_1__c,Pokemon_2__c,Pokemon_3__c,Pokemon_4__c,Pokemon_5__c,Pokemon_6__c,Team_Win__c, Team_Loss__c FROM Team__c limit 20];
    }
   
+   public PageReference RerenderPage() {
+      return null;
+   }
+
+   public System.Pagereference EditTeam(){
+      
+      PageReference Edit = new PageReference('/apex/SaveTeamLoadout?Id=' + string.valueOf(SelectedTeamId));
+      return Edit;
+   }
+
+
    public void DeleteTeam()
    {
       // if for any reason we are missing the reference 
@@ -33,11 +44,10 @@ public with sharing class PreviousTeamEditDeleteController_CC{
       //if team record found delete it
       if (tobeDeleted != null) {
        Delete tobeDeleted;
+       RerenderPage();
       }
      
       //refresh the data
       LoadData();
    }    
-  
-  
 }
