@@ -23,6 +23,13 @@
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
             "default": true
+        },
+        {
+            "path": "TeamList",
+            "package": "TeamList",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT",
+            "default": false
         }
     ],
     "name": "project-visualforce",
@@ -33,6 +40,7 @@
         "BasePackage": "0Ho8c000000XZDaCAO",
         "BasePackage@0.1.0-1": "04t8c000000pLZ8AAM",
         "Battle": "0Ho8c000000fxgzCAA",
-        "SitePackage": "0Ho8c000000XZE4CAO"
+        "SitePackage": "0Ho8c000000XZE4CAO",
+        "TeamList": "0Ho8c000000XZDfCAO"
     }
 }
