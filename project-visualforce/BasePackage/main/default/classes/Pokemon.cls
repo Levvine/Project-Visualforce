@@ -1,5 +1,7 @@
 public class Pokemon {
     public static final Integer maxNum = 898;
+    static Http http = new Http();
+    static HttpRequest request = new HttpRequest();
     
 	public cls_abilities[] abilities;
 	public Integer base_experience;	//64
@@ -69,7 +71,7 @@ public class Pokemon {
 		public String name;	//bulbasaur
 		public String url;	//https://pokeapi.co/api/v2/pokemon_species/1/
 	}
-	class cls_sprites {
+	public class cls_sprites {
 		public String back_default;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png
 		public String back_female;
 		public String back_shiny;	//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/1.png
@@ -280,11 +282,11 @@ public class Pokemon {
 		public String name;	//hp
 		public String url;	//https://pokeapi.co/api/v2/stat/1/
 	}
-	class cls_types {
+	public class cls_types {
 		public Integer slot;	//1
 		public cls_type type;
 	}
-	class cls_type {
+	public class cls_type {
 		public String name;	//grass
 		public String url;	//https://pokeapi.co/api/v2/type/12/
 	}
@@ -292,10 +294,22 @@ public class Pokemon {
 		return (Pokemon) System.JSON.deserialize(json, Pokemon.class);
 	}
     
+    
+    
     public static Pokemon get(Integer index) {
-        Http http = new Http();
-        HttpRequest request = new HttpRequest();
         request.setEndpoint('https://pokeapi.co/api/v2/pokemon/' + index);
+        request.setMethod('GET');
+        HttpResponse response = http.send(request);
+        //if successful, parse json
+        Pokemon pkmn = new Pokemon();
+        if(response.getStatusCode() == 200){
+            pkmn = Pokemon.parse(response.getBody());
+        }
+        return pkmn;
+    }
+    
+    public static Pokemon get(String str) {
+        request.setEndpoint('https://pokeapi.co/api/v2/pokemon/' + str);
         request.setMethod('GET');
         HttpResponse response = http.send(request);
         //if successful, parse json

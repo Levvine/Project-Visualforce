@@ -1,0 +1,30 @@
+<apex:page controller="pokedexController" lightningStylesheets="true">
+    <apex:form >
+    <apex:inputText value="{!inputValue}" id="theTextInput" Title="Pokemon Name or Number"/>
+    </apex:form>
+    <apex:pageBlock rendered="{!renderValue}">
+         <apex:pageBlockSection >
+             <apex:image id="theImage" value="{!pokeSprite}"/>
+        </apex:pageBlockSection>
+       <apex:pageBlockSection >
+        Pokemon Name: {!pokeName}
+        </apex:pageBlockSection>
+        <apex:pageBlockSection >
+        Pokedex Number: {!pokeId}
+        </apex:pageBlockSection>
+        <apex:pageBlockSection >
+        Pokemon Height: {!pokeHeight}
+        </apex:pageBlockSection>
+        <apex:pageBlockSection >
+        Pokemon Weight: {!pokeWeight}
+        </apex:pageBlockSection>
+        <apex:pageBlockSection >
+        Pokemon Type: {!pokeType}
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:pageBlock rendered="{!!renderValue}">
+        <apex:pageBlockSection rendered="{!noResultsBoo}">
+            {!noResults}
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>
