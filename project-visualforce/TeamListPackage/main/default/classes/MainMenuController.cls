@@ -14,11 +14,11 @@ public class MainMenuController {
     }
     
     public PageReference teams() {
-        return null;
+        return new PageReference('/apex/PreviousTeams');
     }
     
     public PageReference dex() {
-        return null;
+        return new PageReference('/apex/pokedex');
     }
     
 }

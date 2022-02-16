@@ -20,3 +20,5 @@ package.xml
 **/profilePasswordPolicies/PT1_profilePasswordPolicy1644980324467.profilePasswordPolicy-meta.xml
 **/profileSessionSettings/PT1_profileSessionSetting1644980324601.profileSessionSetting-meta.xml
 **/tabs/standard-home.tab-meta.xml
+
+**/profiles/Admin.profile-meta.xml
