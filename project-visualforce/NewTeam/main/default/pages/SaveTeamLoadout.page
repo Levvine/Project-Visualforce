@@ -27,10 +27,12 @@
     
   	<apex:form > 
     	<apex:commandButton value="Save Pokemon to New Team" action="{!save}"/>
+        <apex:commandButton action="{!cancel}" value="Cancel" immediate="true" 
+                    html-formnovalidate="formnovalidate" />
     </apex:form>
     
     <apex:outputPanel id="out">
-        <apex:actionstatus id="status" startText="testing...">
+        <apex:actionstatus id="status" startText="Assigning Pokemon ...">
             <apex:facet name="stop">
                 <apex:outputPanel >
                     <p>You have selected:</p>
