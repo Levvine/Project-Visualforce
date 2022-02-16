@@ -14,3 +14,9 @@ package.xml
 # SFDC Sites
 **/sites/*.site-meta.xml
 **/profiles/API Profile.profile-meta.xml
+
+# Admin Metadata
+# Shouldn't be tracked, but also can't be deleted or push will fail
+**/profilePasswordPolicies/PT1_profilePasswordPolicy1644980324467.profilePasswordPolicy-meta.xml
+**/profileSessionSettings/PT1_profileSessionSetting1644980324601.profileSessionSetting-meta.xml
+**/tabs/standard-home.tab-meta.xml

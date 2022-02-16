@@ -11,6 +11,9 @@
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <label>Pokemon</label>
     <navType>Standard</navType>
+    <tabs>standard-Contact</tabs>
+    <tabs>Team__c</tabs>
+    <tabs>Battle__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Pokemon_UtilityBar</utilityBar>
 </CustomApplication>
