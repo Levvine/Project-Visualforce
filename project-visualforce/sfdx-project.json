@@ -48,6 +48,13 @@
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
             "default": false
+        },
+        {
+            "path": "VictoryPackage",
+            "package": "VictoryPackage",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT",
+            "default": false
         }
     ],
     "name": "project-visualforce",
@@ -62,6 +69,7 @@
         "SitePackage": "0Ho8c000000XZE4CAO",
         "TeamListPackage": "0Ho8c000000XZDfCAO",
         "PreBattlePackage": "0Ho8c000000XZDfCAO",
-        "AppProfilePackage": "0Ho8c000000XZFWCA4"
+        "AppProfilePackage": "0Ho8c000000XZFWCA4",
+        "VictoryPackage": "0Ho8c000000XZFqCAO"
     }
 }

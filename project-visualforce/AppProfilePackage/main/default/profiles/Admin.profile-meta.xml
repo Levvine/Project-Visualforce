@@ -38,10 +38,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>PokemonController</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
         <apexClass>PreviousTeamEditDeleteController_CC</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -86,26 +82,6 @@
         <enabled>false</enabled>
         <externalDataSource>PokeAPI</externalDataSource>
     </externalDataSourceAccesses>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Battle__c.GuestTeam__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Battle__c.Guest_Type__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Battle__c.Guest__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Battle__c.HostTeam__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Battle__c.Host__c</field>
@@ -276,14 +252,6 @@
     </pageAccesses>
     <tabVisibilities>
         <tab>Battle__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Pokedex</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>PreviousTeams</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
