@@ -1,0 +1,29 @@
+<apex:page lightningStylesheets="true" docType="html-5.0" controller="MainMenuController">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>
+            <apex:slds />
+            <style>
+                .btn {
+                	width:100%;
+                }
+            </style>
+        </head>
+        <body>
+            <apex:form >
+                <apex:pageBlock >
+                    <div class="slds-align_absolute-center slds-grid_vertical">
+                        <div class="slds-col" style="width:100%;">
+                            <apex:commandButton action="{!play}" value="Play"/>
+                        </div>
+                        <div class="slds-col" style="width:100%;">
+                            <apex:commandButton action="{!teams}" value="Teams" />
+                        </div>
+                        <div class="slds-col" style="width:100%;">
+                            <apex:commandButton action="{!dex}" value="Pokedex" />
+                        </div>
+                    </div>
+                </apex:pageBlock>
+            </apex:form>
+        </body>
+    </html>
+</apex:page>

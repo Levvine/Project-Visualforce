@@ -1,19 +1,20 @@
-public class BattleExtension {
-    
-    final ApexPages.StandardController stdController;    
-    final Battle__c battle;
+public class PreBattleExtension {
+	final ApexPages.StandardController stdController;
+	final Map<String, String> params;    
+    final Participant__c participant;
     
     public Boolean hasId {
         get {
-            if (this.stdController.getId() == null || this.battle.Host__c == null) return false;
+            if (this.params.get('battleId') == null || this.battle.Host__c == null) return false;
             return true;
         }}
+    public Battle__c battle { get; set; }
     public Participant__c host { get; private set; } 
     public List<Participant__c> guests { get; private set; }
     public String opponent { get; set; }
     public String opponentHelpText { get; private set; }
     public String opponentURL { get; set; }
-    public Boolean showOpponentURL { 
+    public Boolean showOpponentURL {
         get {
             return (opponent == FROM_URL);
         }
@@ -21,16 +22,20 @@ public class BattleExtension {
     
     public static final String RANDOM = 'Random';
     public static final String FROM_URL = 'From URL';
-    public static final List<String> fieldNames = new List<String>{'Participants__r.Name'};
+    public static final List<String> fieldNames = new List<String>{'Trainer__c'};
     
-    public BattleExtension(ApexPages.StandardController stdController) {
+    public PreBattleExtension(ApexPages.StandardController stdController) {
         this.stdController = stdController;
-        this.stdController.addFields(fieldNames);
-        this.battle = (Battle__c) stdController.getRecord();
-        
-         System.debug(this.battle);
-        System.debug(fieldNames);
-        if (stdController.getId() != null && this.battle.Host__c != null) {
+        // this.stdController.addFields(fieldNames);
+        this.participant = (Participant__c) stdController.getRecord();
+        this.params = ApexPages.currentPage().getParameters();
+		
+        // if battleId is present, add battle to participant
+        String battleId = this.params.get('battleId');
+        if (battleId != null) {
+            this.battle = (Battle__c) SiteUtils.getSObject('Battle__c', battleId);
+            
+            // if no host is assigned, assign host to current participant
             this.host = [SELECT Name, Trainer__c, Team__c FROM Participant__c WHERE Battle__c=:this.battle.Id AND Id=:this.battle.Host__c];
             this.guests = [SELECT Name, Trainer__c, Team__c FROM Participant__c WHERE Battle__c=:this.battle.Id AND Id!=:this.battle.Host__c];
             this.opponent = RANDOM;
@@ -47,7 +52,6 @@ public class BattleExtension {
     }
     
     public PageReference refresh() {
-        System.debug(ApexPages.currentPage().getParameters().get('retURL'));
         return null;
     }
     
@@ -55,19 +59,24 @@ public class BattleExtension {
         // Check if HostTeam was selected properly
         if (this.host == null) {
             return null;
+        } else {
+            this.host.Team__c = participant.Team__c;
         }
         // If selected guest type is CPU, generate a new CPU participant.
+        // Remember to add trainer to team or filter will reject record.
         if (this.battle.Guest_Type__c == 'CPU') {
-            SObject oppTeam;
+            Team__c oppTeam;
             if (opponent == RANDOM) {
-                oppTeam = new Team__c(
+                
+                oppTeam = (Team__c) new Team__c(
                     Name = 'CPU Team',
                     Pokemon_1__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1),
                     Pokemon_2__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1),
                     Pokemon_3__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1),
                     Pokemon_4__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1),
                     Pokemon_5__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1),
-                    Pokemon_6__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1)
+                    Pokemon_6__c = Integer.valueof(Math.random() * (Pokemon.maxNum - 1) + 1),
+                    Trainer__c = CpuController.trainer.Id
                 );
                 insert oppTeam;
             } else if (opponent == FROM_URL) {
@@ -81,26 +90,29 @@ public class BattleExtension {
                     Map<String, Object> resMap = (Map<String, Object>) resBody;
                     resMap.remove('Id');
                     
-                    oppTeam = SiteUtils.createSObject('Team__c', resMap);
+                    oppTeam = (Team__c) SiteUtils.createSObject('Team__c', resMap);
+                    oppTeam.Trainer__c = CPUController.trainer.Id;
                     insert oppTeam;
                 } catch (CalloutException e) {
                     System.debug(e);
                 }
             }
             Contact trainer = CPUController.trainer;
-            Participant__c guest = new Participant__c(Trainer__c=trainer.Id, Team__c=oppTeam.Id, Battle__c=this.battle.Id);
+            Participant__c guest = new Participant__c(Trainer__c=CPUController.trainer.Id, Team__c=oppTeam.Id, Battle__c=this.battle.Id);
             insert guest;
             guests.add(guest);
         }
-        String myTeamStr = String.valueOf(this.host.Id);
-        String oppTeamStr = String.valueOf(this.guests[0].Id);
+        System.debug(this.host);
+        String myTeamStr = String.valueOf(this.host.Team__c);
+        String oppTeamStr = String.valueOf(this.guests[0].Team__c);
         
         // Check if GuestTeam was created properly
         if (this.guests[0] == null) {
             return null;
         }
         stdController.save();
+        // upsert battle at end
+        upsert this.battle;
         return new PageReference('/apex/PokemonBattle?myTeam=' + myTeamStr + '&oppTeam=' + oppTeamStr);
     }
-    
 }

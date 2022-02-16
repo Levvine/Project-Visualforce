@@ -2,13 +2,22 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Host__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Host for current battle</description>
+    <description>Host for the current battle</description>
     <externalId>false</externalId>
-    <inlineHelpText>Select a hosting trainer.</inlineHelpText>
+    <inlineHelpText>Select the hosting participant.</inlineHelpText>
     <label>Host</label>
-    <referenceTo>Contact</referenceTo>
-    <relationshipLabel>Battles (Host)</relationshipLabel>
-    <relationshipName>HostBattles</relationshipName>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Participant__c.Battle__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Id</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Participant__c</referenceTo>
+    <relationshipLabel>Battles (Hosted)</relationshipLabel>
+    <relationshipName>HostedBattles</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>

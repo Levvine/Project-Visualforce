@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>HostTeam__c</fullName>
+    <fullName>Team__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Host team for current battle</description>
+    <description>Team participating in a battle</description>
     <externalId>false</externalId>
-    <inlineHelpText>Select a team for the host.</inlineHelpText>
-    <label>Host Team</label>
+    <inlineHelpText>Select a team that will be participating.</inlineHelpText>
+    <label>Team</label>
     <lookupFilter>
         <active>true</active>
-        <errorMessage>Value does not exist or does not match filter criteria.</errorMessage>
         <filterItems>
             <field>Team__c.Trainer__c</field>
             <operation>equals</operation>
-            <valueField>$Source.Host__c</valueField>
+            <valueField>$Source.Trainer__c</valueField>
         </filterItems>
         <isOptional>false</isOptional>
     </lookupFilter>
     <referenceTo>Team__c</referenceTo>
-    <relationshipLabel>Battles (Host)</relationshipLabel>
-    <relationshipName>HostBattles</relationshipName>
+    <relationshipLabel>Participants</relationshipLabel>
+    <relationshipName>Participants</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>

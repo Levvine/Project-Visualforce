@@ -11,18 +11,6 @@
     <type>Picklist</type>
     <valueSet>
         <restricted>true</restricted>
-        <valueSetDefinition>
-            <sorted>false</sorted>
-            <value>
-                <fullName>Human</fullName>
-                <default>true</default>
-                <label>Human</label>
-            </value>
-            <value>
-                <fullName>CPU</fullName>
-                <default>false</default>
-                <label>CPU</label>
-            </value>
-        </valueSetDefinition>
+        <valueSetName>TrainerType</valueSetName>
     </valueSet>
 </CustomField>
