@@ -10,18 +10,43 @@ public class victoryPageController {
 
         public string getWinningPoke(){
             string returnString;
-            Pokemon poke1 = pokemon.get(integer.valueOf(victor.Pokemon_1__c));
-            Pokemon poke2 = pokemon.get(integer.valueOf(victor.Pokemon_2__c));
-            Pokemon poke3 = pokemon.get(integer.valueOf(victor.Pokemon_3__c));
-            Pokemon poke4 = pokemon.get(integer.valueOf(victor.Pokemon_4__c));
-            Pokemon poke5 = pokemon.get(integer.valueOf(victor.Pokemon_5__c));
-            Pokemon poke6 = pokemon.get(integer.valueOf(victor.Pokemon_6__c));
-            returnString = poke1.name.capitalize() + ', ' + 
-                			poke2.name.capitalize() + ', ' + 
-                			poke3.name.capitalize() + ', ' + 
-                			poke4.name.capitalize() + ', ' + 
-                			poke5.name.capitalize() + ', ' + 
-                			poke6.name.capitalize();
+            List<String> names = new List<String>();
+            Pokemon poke1;
+            Pokemon poke2;
+            Pokemon poke3;
+            Pokemon poke4;
+            Pokemon poke5;
+            Pokemon poke6;
+            System.debug(victor);
+
+            //System.debug(returnString);
+            if (victor.Pokemon_1__c != null) {
+                poke1 = pokemon.get(integer.valueOf(victor.Pokemon_1__c));
+                names.add(poke1.name.capitalize());
+            } 
+            if (victor.Pokemon_2__c != null) {
+                
+                poke2 = pokemon.get(integer.valueOf(victor.Pokemon_2__c));
+                names.add(poke2.name.capitalize());
+                
+            } 
+            if (victor.Pokemon_3__c != null) {
+                poke3 = pokemon.get(integer.valueOf(victor.Pokemon_3__c));
+                names.add(poke3.name.capitalize());
+            } 
+            if (victor.Pokemon_4__c != null) {
+                poke4 = pokemon.get(integer.valueOf(victor.Pokemon_4__c));
+                names.add(poke4.name.capitalize());
+            } 
+            if (victor.Pokemon_5__c != null) {
+                poke5 = pokemon.get(integer.valueOf(victor.Pokemon_5__c));
+                names.add(poke5.name.capitalize());
+            } 
+            if (victor.Pokemon_6__c != null) {
+                poke6 = pokemon.get(integer.valueOf(victor.Pokemon_6__c));
+                names.add(poke6.name.capitalize());
+            }
+            returnString = String.join(names, ', ');
             
             if(returnString != null){
                 return returnString;
