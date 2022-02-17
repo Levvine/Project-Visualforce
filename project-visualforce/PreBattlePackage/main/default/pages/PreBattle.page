@@ -34,7 +34,6 @@
                         No valid Host ID or Battle ID provided.    
                     </p>
                 </apex:pageBlock>
-                <!-- <c:Lookup /> -->
             </apex:form>
         </body>
     </html>
