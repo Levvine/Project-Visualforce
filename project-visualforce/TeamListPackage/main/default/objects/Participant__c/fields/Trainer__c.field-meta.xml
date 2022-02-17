@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Guest__c</fullName>
+    <fullName>Trainer__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Guest for current battle</description>
+    <description>Trainer participating in a battle</description>
     <externalId>false</externalId>
-    <inlineHelpText>Select a guest trainer.</inlineHelpText>
-    <label>Guest</label>
+    <inlineHelpText>Select a trainer who will be participating.</inlineHelpText>
+    <label>Trainer</label>
     <referenceTo>Contact</referenceTo>
-    <relationshipLabel>Battles (Guest)</relationshipLabel>
-    <relationshipName>GuestBattles</relationshipName>
+    <relationshipLabel>Participants</relationshipLabel>
+    <relationshipName>Participants</relationshipName>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Lookup</type>

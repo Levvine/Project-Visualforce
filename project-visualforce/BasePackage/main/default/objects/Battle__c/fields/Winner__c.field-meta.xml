@@ -2,11 +2,19 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Winner__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
-    <description>Winning trainer for current battle</description>
+    <description>Winning participant for current battle</description>
     <externalId>false</externalId>
-    <inlineHelpText>Select a winner.</inlineHelpText>
     <label>Winner</label>
-    <referenceTo>Contact</referenceTo>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Participant__c.Battle__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Id</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Participant__c</referenceTo>
     <relationshipLabel>Victories</relationshipLabel>
     <relationshipName>Victories</relationshipName>
     <required>false</required>

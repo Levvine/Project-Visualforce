@@ -12,7 +12,6 @@ public class VFBattleCustomController {
     Team__c away;
     
     public VFBattleCustomController() {
-		System.debug('hello world');
         System.debug(paramMap);
         
         home = [

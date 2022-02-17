@@ -1,25 +1,40 @@
-<apex:page lightningStylesheets="true" standardController="Battle__c" extensions="BattleExtension">
-    <apex:form >
-        <apex:pageBlock title="New Battle" mode="edit">
-            <apex:pageBlockButtons >
-                <apex:commandButton action="{!cancel}" value="Cancel" />
-                <apex:commandButton action="{!save}" value="Start" />
-            </apex:pageBlockButtons>
-            <apex:pageBlockSection id="team-select" title="Team Selection" columns="2">
-                <apex:inputField value="{!Battle__c.Host__c}" />
-                <apex:inputField value="{!Battle__c.HostTeam__c}" />
-                <apex:pageBlockSectionItem helpText="{!opponentHelpText}">
-                    <apex:outputLabel value="Opponent Selection" />
-                    <apex:selectRadio value="{!opponent}">
-                        <apex:selectOptions value="{!opponentOptions}" />
-                        <apex:actionSupport event="onchange" action="{!refresh}" rerender="team-select" status="status" />
-                    </apex:selectRadio>
-                </apex:pageBlockSectionItem>
-                <apex:pageBlockSectionItem id="opponent-url" rendered="{!showOpponentURL}">
-                    <apex:outputLabel value="Opponent URL" />
-                    <apex:inputText value="{!opponentURL}" />
-                </apex:pageBlockSectionItem>
-            </apex:pageBlockSection>
-        </apex:pageBlock>
-    </apex:form>
+<apex:page lightningStylesheets="true" docType="html-5.0" standardController="Participant__c" extensions="PreBattleExtension">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>
+            <apex:slds />
+        </head>
+        <body>
+            <apex:form rendered="{!hasId}">
+                <apex:pageBlock title="{!battle.Name}" mode="edit">
+                    <apex:pageBlockSection id="team-select" title="Team Selection" columns="2">
+                        <apex:inputField value="{!Participant__c.Team__c}" />
+                        <apex:pageBlockSectionItem helpText="{!opponentHelpText}">
+                            <apex:outputLabel value="Opponent Selection" />
+                            <apex:selectRadio value="{!opponent}">
+                                <apex:selectOptions value="{!opponentOptions}" />
+                                <apex:actionSupport event="onchange" action="{!refresh}" rerender="team-select" status="status" />
+                            </apex:selectRadio>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem id="opponent-url" rendered="{!showOpponentURL}">
+                            <apex:outputLabel value="Opponent URL" />
+                            <apex:inputText value="{!opponentURL}" />
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                    <div class="slds-align_absolute-center">
+                        <apex:commandButton action="{!cancel}" value="Cancel" />
+                        <apex:commandButton action="{!save}" value="Start" />
+                    </div>
+                </apex:pageBlock>
+                
+                
+            </apex:form>
+            <apex:form rendered="{!!hasId}">
+                <apex:pageBlock title="Error">
+                    <p>
+                        No valid Host ID or Battle ID provided.    
+                    </p>
+                </apex:pageBlock>
+            </apex:form>
+        </body>
+    </html>
 </apex:page>

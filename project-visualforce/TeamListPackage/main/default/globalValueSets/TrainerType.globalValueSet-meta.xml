@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Human</fullName>
+        <default>true</default>
+        <label>Human</label>
+    </customValue>
+    <customValue>
+        <fullName>CPU</fullName>
+        <default>false</default>
+        <label>CPU</label>
+    </customValue>
+    <description>Determine if the player is Human or AI Controlled</description>
+    <masterLabel>TrainerType</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
