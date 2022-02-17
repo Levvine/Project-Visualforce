@@ -1,4 +1,4 @@
-<apex:page standardController="Team__c" extensions="SaveTeamLoadoutExtension">
+<apex:page standardController="Team__c" extensions="TeamExtension">
     <h1>
         Select Your Pokemon To Make Your Team
     </h1>
