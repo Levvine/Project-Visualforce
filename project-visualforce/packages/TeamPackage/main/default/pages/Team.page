@@ -1,0 +1,46 @@
+<apex:page standardController="Team__c" extensions="SaveTeamLoadoutExtension">
+    <h1>
+        Select Your Pokemon To Make Your Team
+    </h1>
+    <apex:form > 
+        <apex:selectList size="10" value="{!pokemon1}" multiselect="false">
+                <apex:selectOptions Value="{!pokeListString}"/>
+        </apex:selectList>
+        <apex:selectList size="10" value="{!pokemon2}" multiselect="false">
+                <apex:selectOptions Value="{!pokeListString}"/>
+        </apex:selectList>
+        <apex:selectList size="10" value="{!pokemon3}" multiselect="false">
+                <apex:selectOptions Value="{!pokeListString}"/>
+        </apex:selectList>
+        <apex:selectList size="10" value="{!pokemon4}" multiselect="false">
+                <apex:selectOptions Value="{!pokeListString}"/>
+        </apex:selectList>
+        <apex:selectList size="10" value="{!pokemon5}" multiselect="false">
+                <apex:selectOptions Value="{!pokeListString}"/>
+        </apex:selectList>
+        <apex:selectList size="10" value="{!pokemon6}" multiselect="false">
+                <apex:selectOptions Value="{!pokeListString}"/>
+        </apex:selectList>
+
+        <apex:commandButton value="Confirm Selection" action="{!selectPokemon}" rerender="out" status="status"/>
+    </apex:form>
+    
+    <apex:form > 
+        <apex:commandButton value="Save Pokemon to New Team" action="{!save}"/>
+        <apex:commandButton action="{!cancel}" value="Cancel" immediate="true" 
+                    html-formnovalidate="formnovalidate" />
+    </apex:form>
+    
+    <apex:outputPanel id="out">
+        <apex:actionstatus id="status" startText="Assigning Pokemon ...">
+            <apex:facet name="stop">
+                <apex:outputPanel >
+                    <p>You have selected:</p>
+                    <p>
+                        {!pokemon1} , {!pokemon2} , {!pokemon3} , {!pokemon4} , {!pokemon5} , {!pokemon6}
+                    </p>
+                </apex:outputPanel>
+            </apex:facet>
+        </apex:actionstatus>
+    </apex:outputPanel>
+</apex:page>

@@ -1,64 +1,111 @@
 {
     "packageDirectories": [
         {
-            "path": "BasePackage",
+            "path": "packages\\BasePackage",
             "package": "BasePackage",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
             "default": false
         },
         {
-            "path": "SitePackage",
+            "path": "packages\\SitePackage",
             "package": "SitePackage",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
-            "default": true
+            "default": false,
+            "dependencies": [
+                {
+                    "package": "BasePackage@1.0.0-LATEST"
+                }
+            ]
         },
         {
-            "path": "NewTeamPackage",
-            "package": "NewTeamPackage",
+            "path": "packages\\TeamPackage",
+            "package": "TeamPackage",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
-            "default": false
+            "default": true,
+            "dependencies": [
+                {
+                    "package": "BasePackage@1.0.0-LATEST"
+                }
+            ]
         },
         {
-            "path": "PokedexPackage",
+            "path": "packages\\PokedexPackage",
             "package": "PokedexPackage",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
-            "default": false
+            "default": false,
+            "dependencies": [
+                {
+                    "package": "BasePackage@1.0.0-LATEST"
+                }
+            ]
         },
         {
-            "path": "BattlePackage",
+            "path": "packages\\BattlePackage",
             "package": "BattlePackage",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
-            "default": false
+            "default": false,
+            "dependencies": [
+                {
+                    "package": "BasePackage@1.0.0-LATEST"
+                }
+            ]
         },
         {
-            "path": "PreBattlePackage",
+            "path": "packages\\PreBattlePackage",
             "package": "PreBattlePackage",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
-            "default": false
+            "default": false,
+            "dependencies": [
+                {
+                    "package": "BasePackage@1.0.0-LATEST"
+                }
+            ]
         },
         {
-            "path": "TeamListPackage",
+            "path": "packages\\TeamListPackage",
             "package": "TeamListPackage",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
-            "default": false
+            "default": false,
+            "dependencies": [
+                {
+                    "package": "BasePackage@1.0.0-LATEST"
+                }
+            ]
         },
         {
-            "path": "AppProfilePackage",
+            "path": "packages\\AppProfilePackage",
             "package": "AppProfilePackage",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
-            "default": false
+            "default": false,
+            "dependencies": [
+                {
+                    "package": "BasePackage@1.0.0-LATEST"
+                }
+            ]
         },
         {
-            "path": "VictoryPackage",
+            "path": "packages\\VictoryPackage",
             "package": "VictoryPackage",
+            "versionName": "ver 0.1",
+            "versionNumber": "0.1.0.NEXT",
+            "default": false,
+            "dependencies": [
+                {
+                    "package": "BasePackage@1.0.0-LATEST"
+                }
+            ]
+        },
+        {
+            "path": "packages",
+            "package": "Pokemon-App",
             "versionName": "ver 0.1",
             "versionNumber": "0.1.0.NEXT",
             "default": false
@@ -78,6 +125,7 @@
         "PreBattlePackage": "0Ho8c000000XZDfCAO",
         "AppProfilePackage": "0Ho8c000000XZFWCA4",
         "VictoryPackage": "0Ho8c000000XZFqCAO",
-        "NewTeamPackage": "0Ho8c000000KylCCAS"
+        "TeamPackage": "0Ho8c000000KylCCAS",
+        "Pokemon-App": "0Ho8c000000XZG0CAO"
     }
 }
